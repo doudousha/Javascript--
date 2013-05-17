@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+	/**
+	  *主题:iframe
+	  *
+	  *
+	  *
+	  *
+	  */
+
+	  window.onload = function(){
+	  	var iframelText = document.getElementById("iframeOne");
+
+	  	//获得iframeText页面的window对象(兼容Ie6-ie8),(chrome中，这个页面必须是远程页面,本地页面不能访问contentWindow)
+	  	iframelText.contentWindow;
+
+	  	//获得iframeText页面的document对象(ie7,ie7不兼容)
+	  	iframelText.contentDocument;
+
+
+	  	//子iframe控制父iframe
+
+	  	//获得父iframe的document对象(页面必须是远程页面,服务器环境)
+	  	window.parent.document;
+
+	  	//最顶层的iframe的document对象
+	  	window.top.document;
+
+	  	//iframe的onload事件(ifame.onload这种方式绑定在ie下不会被触发)
+	  	var iframe document.createelemewnt("iframe");
+	  	iframe.src = "text.hml";
+	  	iframe.onload = function(){
+
+	  	};
+
+	  	//ie下iframe的onload事件只能是绑定的方式定义
+	  	iframe.attachEvent("onload",function(){
+
+
+	  	})
+
+
+
+	  	/**
+	  	  *防止钓鱼
+	  	  *
+	  	  */
+	  	  if(window ! = window.top){
+	  	  	window.top.location.href="www.qq.com";
+	  	  }
+
+
+	  	 /**
+	  	   *改变iframe大小
+	  	   *
+	  	   *
+	  	   */
+
+
+	  };
+
+
+	</script>
+
+</head>
+<body>
+	
+
+	<iframe src="iframelText.html" id = "iframeOne" frameborder="0"></iframe>
+</body>
+</html>
