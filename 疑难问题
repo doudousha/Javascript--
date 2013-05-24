@@ -1,0 +1,7 @@
+<div class='styleOne styleTwo' ></div>
+有些时候styleTwo的样式在页面并不起作用,那么解决的方案就是加"!importand"
+!important是CSS1就定义的语法，作用是提高指定样式规则的应用优先权。语法格式{ cssRule !important }
+例如:
+.styleTwo{
+  height:200px !importand;
+}
