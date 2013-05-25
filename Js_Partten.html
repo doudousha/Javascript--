@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+		/*
+		 *题目:  全局变量的问题
+		 *描述:  全局变量在Javascript应用程序或网页中的代码是共享的
+		 */
+
+		 var result = 20;
+		 //反模式
+		 function sum(x,y)
+		 {
+		 	//暗示全局变量
+		 	result  = x +y;
+		 	return result;
+		 }
+		 //模式
+		 function sum(x,y)
+		 {
+		 	//函数内申明的变量是本地的
+		 	//不可再函数以外使用
+		 	var result = x+y;
+		 	return result;
+		 }
+
+		 //反模式
+		 function bar()
+		 {
+		 	var a = b = 0;
+		 }
+		 //前面的代码如下
+		 var a = (b=0);
+		 //示列:
+		 var a = 1;
+		 var b = 1;
+		 bar();
+		 function bar(){
+		 	console.log(a);//输出undefind
+		 	console.log(b);//输出10
+		 	var a = b = 0;
+		 }
+
+		 //模式
+		 function bar()
+		 {
+		 	var a,b;
+		 	a = b = 0;
+
+		 }
+
+
+
+		 /*
+		  *题目: var模式
+		  *描述: 使用一个var申明多个变量
+		  */
+
+		  /*
+		   *好处:
+		   *1,提供了寻找所需函数局部变量的统一地方
+		   *2,防止在定义之前使用变量
+		   *3,可以帮助你记住申明过的变量，减少全局
+		   *4,减少代码
+		   */
+		   function func()
+		   {
+		   		var a = 1,
+		   			b = 2;
+		   			sum = a +b,
+		   			myobject = {},
+		   			i,
+		   			j;
+		   		// function body
+		   }
+		   function updateElement()
+		   {
+		   		var el = document.getElementById("result"),
+		   		style = el.style;
+		   }
+
+		   /*
+		   	*题目: 访问全局对象
+		   	*描述: 在不适用window情况下访问全局对象
+		   	*/
+
+
+		   	//反模式
+		   	//在ECMAScript 5 in strict mode下不可欲行
+		   	var global = (function(){
+		   		return this;
+		   	});
+
+		   	//模式
+		   	var global = (function(){
+		   		return this || (1,eval)('this');
+		   	}());
+
+		   	//模式
+		   	(function(global){
+
+		   	}(this));
+
+
+
+		   	/*
+		   	 * 题目:函数创建
+		   	 * 描述:创建函数几种方式
+		   	 */
+
+		   	 //模式 - 创建匿名函数并分配给一个变量
+		   	 /*好处
+		   	  *	1,使得 "函数作为对象" 概念更容易理解
+		   	  * 2,强制工程师使用分号的习惯
+		   	  * 3, 避免很多函数和作用域相关的问题
+		   	  *
+		   	  */
+		   	  var getData = function(){
+		   	  	//....
+		   	  	console.log('hello');
+		   	  };
+
+
+		   	  //命名函数表达式(只在debugging有好处)
+		   	  /*
+		   	   * 好处：
+		   	   * 1. 提供一个明确的函数名:帮主debugger堆栈检查.
+		   	   * 2. 允许递归函数:getData函数可以自动用
+		   	   * 3.
+		   	   * 问题:
+		   	   * 1. IE有些问题(函数名泄露到全局变量中)
+		   	   *
+		   	   */
+
+		   	   var getData = function getData()
+		   	   {
+		   	   		console.log('hello');
+		   	   }
+		   	   /*
+		   	    *当省略了第二个getDate并且以一个未命名函数表达式作为结束,这并不会影响该函数的定义以及后续的调用.唯一的区别在于该函数对象的name属性将会变成一个空字符串.name属性是Javascript语言的一个扩展（它并不是ECMA标准的一部分),但是在许多环境中得到广泛的应用.如果您保留了第二个getData, 那么getData.name属性捡回包含"getData"
+		   	    *
+		   	    *
+		   	    *
+		   	    *
+		   	    */
+
+
+		   	    /*
+		   	     *	题目: 作用域查找
+		   	     *  描述:  变量通过函数作用域查找
+		   	     *
+		   	     *
+		   	     */
+		   	     var bar ; // 全局变量
+
+		   	     //反模式
+		   	     var foo = 42;
+		   	     (function(a){
+		   	     	(function(b){
+		   	     		bar = foo;//foo的值会从当前作用域链向上查找，知道找到全局
+		   	     	}(bar));
+		   	     }(bar));
+
+		   	     //模式
+		   	     var foo = 42;
+		   	     (function(){
+		   	     	(function(foo){
+		   	     		bar = foo;
+		   	     	}(foo));
+		   	     }(foo));
+	</script>
+</head>
+<body>	
+</body>
+</html>
+
+
+
+

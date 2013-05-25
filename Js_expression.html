@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+		/*
+		 * 题目:Javascript在实际开发中遇到的问题
+		 *
+		 */
+
+		 /*
+		  *Ajax请求服务器端,服务器端返回的数据;
+		  */
+		 var jsonData = eval("("+data+")");
+		 //或者
+		 var jsonData = eval("1,"+data);//连续求值，返回最后一个表达式的值 
+		 /*
+		  *自调用表达式
+		  */
+		  (function(){
+		  	//code....
+		  })();
+		  (function(){
+		  	//code....
+		  }())
+
+
+		  /*
+		   * 题目: Javascript语法综述
+		   * 描述:
+		   *     1. 纯粹陈述 "值" 的过程,被称为变量和类型申明.
+		   *	 2. 纯粹陈述 "逻辑" 的过程,被称为语句(含流程控制子句).
+		   *     3. 陈述 "值与(算法的)逻辑" 的关系的过程，被称为表达式.
+		   *     
+		   *
+		   */
+
+		   /*
+		    * 题目: Javascript的语法: 表达式运算
+		    * 描述: 
+		    *      1. 表达式是由运算符和运算元构成。运算元除了包括变量,还包括函数(或方法)的返回值,此外也包括直接量.
+		    *		  Javascript中可以存在没有运算符的表达式,这称为"单值表达式".单值表达式有值的含义，表达式的结果即是该值。除单值表达式之外，一个Javascript表达式中必然存在至少一个运算符.运算符可以有一至三个运算元,没有运算元的、孤立与代码上下文的运算符是不符合语法的.(参考Javascript语言精髓和编程实践63页)
+		    *
+		    *
+		    *
+		    *      2.表达式都有返回值
+		    *			用运算符()调用函数式一个表达式。所有表达式都有一个值,return语句就用于指定函数返回的值,这个值是函数调用表达式的值。return语句只能出现在函数体内。出现在代码中的其他地方都有可能造成语法错误.在执行return语句时,先计算expression,然后返回它的值作为函数的值。当执行return语句时,即使函数主题中还有其他语句,函数的执行也会停止。
+		    			如果一个函数执行了不带expression的return语句,或者因为它执行到了函数主体的尾部而返回，那么这个函数调用的表达式的值就是undefined.(参考Javascript权威指南122页)
+		    *
+		    *
+		    *
+		    *
+		    * 参考:
+		    *	运算元: var value = true ? 1 : 0;
+		    */
+
+
+	</script>
+</head>
+<body>
+	
+
+</body>
+</html>
