@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+		/**
+		  *描述:对象转换为数组,前提是对象存在length属性
+		  *兼容性(ie(6-8）火狐，谷歌兼容)
+		  *
+		  */
+		var obj = {1:'hello',0:23,length:2};
+		console.log( Array.prototype.slice.call(obj));//[23,"hello"]
+        /**
+          *javascript数组的length属性不是只读的，因此，通过设置这个属性，可以从数组的末尾移除项或向数组中添加新项
+          *
+          *
+          */
+        var arr = ["red	"];
+        arr.length = 4;
+        console.log(arr);// ["red",undefined,undefined,undefined]
+       
+       /**
+         *数组添加元素
+         *
+         */
+        var arr = [];
+        arr[0] = "red";
+        //push() 可以将一个或多个新元素附加到数组的尾部, 然后返回数组新长度; 
+        arr.push("yellow");
+        arr[arr.length] = "green";
+
+       /**
+         *删除元素
+         *
+         */
+
+       var arr = ["blue","yellow","white"];
+       delete arr[0];//[undefined,"yellow","white"]
+       arr[0] = null;//[undefined,"yellow","white"]
+       //shift:将数组头部的一个元素移出,并返回该元素
+       arr.shift();//["yellow","white"]
+       //pop:将数组尾部的一个元素移出,并返回该元素
+       arr.pop();//["yellow"]
+       arr.length = 0;//[] 
+       
+
+
+
+	</script>
+</head>
+<body>
+
+
+</body>
+</html>

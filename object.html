@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+		/* 检查属性存在性 */
+		var obj = {color:"red"};
+		console.log('color' in obj); // true; 
+
+		var MethodConstrutor= function() {};
+		MethodConstrutor.prototype.color = 'red';
+		var obj = new MethodConstrutor;
+		console.log('color' in obj); // true;
+
+
+		/*  
+		    通用的 Object 属性和方法 
+		    JavaScript 中所有对象都继承自 Object 类; 
+		    1, constructor 属性. 
+		    指向其构造函数.     
+		*/
+		var F = function () {}; 
+		var f = new F; 
+		console.log(f.constructor == F); // true  
+		// 构造函数的原型存在属性 constructor 指向自己; 
+		F.prototype.constructor == F; 
+		// 补充： 
+		var F = function () {}; 
+		var G = function () {}; 
+		G.prototype = new F; 
+		  
+		var g = new G; 
+		console.log(g.constructor == F); // true; 
+		console.log(g.constructor == G); // false; 
+		// 可使用 g instanceof F; 
+
+		/**
+		  *     hasOwnProperty(); 
+		  		obj.hasOwnProperty(proName):object检测proName属性名是否是对象本身的一个成员(返回(true),而不是从原型链继承过来的(false)
+		     	propertyIsEnumberable(); 
+		        是否可枚举出来; 
+		    	isPrototyeOf(); 
+		        a.isPrototyeOf(b); 
+		        如果 a 是 b 的原型, 则返回 true; 
+
+		  *
+		  */
+		var o = {}; // new Object; 
+		Object.prototype.isPrototyeOf(o);    // true; 
+		Object.isPrototyeOf(o);              // false; 
+		o.isPrototyeOf(Object.prototype);    // false; 
+		Function.prototype.isPrototyeOf(Object); // true; 
+
+
+	</script>	
+</head>
+<body>
+	
+
+</body>
+</html>
