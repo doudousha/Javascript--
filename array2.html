@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+		/**
+		  *类似数组的对象
+		  *
+		  *Javascript数组是Array的实例,不同的Array方法可以通过他们来调用.
+		  *这些都是Javascript数组的独特特性.但他么不是定义一个数组的最基本的特性.把 
+		  任何具有一个length属性以及相应的整数属性的对象作为一个数组，这种“类似数组"的对象只是偶然
+		 的出现,但是，虽然不能在他们之上调用数据的方法或者通过length属性期待特殊的行为,但是仍然可以用遍历一个真正的数组的代码来遍历他们.事实证明,许多数组算法对于类似数组的对象和真正的数组对象都是一样有效的.只要不尝试添加元素或者改变length属性，可以把类似数组的对象当做真正的数组对待.
+		  *
+		  *Arguments对象是一个类似数组的对象
+		  *document.getElmentsByTagName(),返回类似数组的对象
+		  */
+		/**
+		  *虽然我们可以用类似数组的对象循环了，但是如果我们的类似数组的对象还是用不了数组的方法，其实类似数组到数组可以转换，(*切记类似数组的定义，具有length属性和整数属性的对象)
+		  */
+
+
+		  var t = {0:"one",1:"two",'length':2};
+		  console.log(Array.prototype.slice.call(t));//["one", "two"] 
+		  	t = {0:"one",1:"two",'length':1};
+		  console.log(Array.prototype.slice.call(t));//["one"] 
+
+		 function method(){
+		 	//arguments对象也有length属性，并且arguments对象的属性都是从0开始的，所以arguments是类似数组，类似数组可以转换数组
+		 	console.log(Array.prototype.slice.call(arguments) );//["one", "two"] 
+		 }
+		 method("one","two");
+	</script>
+</head>
+<body>
+	
+
+
+</body>
+</html>
