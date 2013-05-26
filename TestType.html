@@ -1,1 +1,62 @@
-aa
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+	/**
+	  *类型检测
+	  *Javascript权威指南(第五版)196页
+	  *
+	  */
+
+	/**
+	  *(1) typeof运算符
+	  *
+	  */
+	  console.log(typeof null) //object
+	  console.log(typeof undefined)//object
+	  console.log(typeof new Function())//function
+
+	/**
+	  *(2) instanceof 和构造方法
+	  * insstanceof的左边是要进行测试的值,右边应该是定义了一个类的构造函数.注意
+	  *对象是他自己的累的一个实例，也是任何超类的一个实例。
+	  *
+	  */
+
+	  var f = function(){};
+	  console.log(f instanceof Function ) //true
+	  console.log(f instanceof Object)//true
+
+	/**
+	  *(3)constructor属性
+	  *如果要测试对象是否是一个具体类的一个实例，以及是否不是某个子类的实例
+	  *可以查看对象的constructor属性、
+	  *
+	  */
+
+	   var date = new Date();
+	   console.log(date instanceof Date);//true
+	   console.log(date.constructor == Object);
+
+	/**
+	  *(4)toString()测试对象的类型
+	  * 任何没有定义自己的toString()方法得类,都会继承这个默认的实现.
+	  默认的toString()方法的一个有趣的功能就是，他会解释内建对象(不包括自定义类new的对象)的而一些内部的类型信息.
+
+	  大多数类覆盖掉了默认的toString()方法，就无法直接在一个对象上调用它并期待找到对象的类名。相反，要在Object.prototype中显示的引用默认函数，
+	  *
+	  */
+
+	 Object.prototype.toString.call(obj);//always invokes the default toString（总是调用默认的tostring();
+
+	 console.log( Object.prototype.toString.call([]));//[object Array] 
+     console.log( Object.prototype.toString.call(new Date()));//[object Date] 
+	</script>
+</head>
+<body>
+	
+
+</body>
+</html>
