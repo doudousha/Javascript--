@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+<script type="text/javascript">
+
+	/**
+	  *queryString
+	  *得到地址栏参数，或者你可以增加一个key-value
+	  *
+	  *
+	  */
+
+
+	function query(arrs) {
+		var url = location.search,
+		 reg = /(\w+)=([^&]*)/g,
+		 obj = {},
+		 arrs = arrs || [],
+		 result,
+		 length,
+		 str="",
+		 i=0;
+		while (result = reg.exec(url)) {
+			obj[result[1]] = result[2];
+		}
+		for(length=arrs.length;i<length;i+=1){
+			for(var j in obj){
+				if(RegExp(arrs[i].key,"i").test(j)){
+					delete obj[j]; 
+				}				
+			}
+			obj[arrs[i].key] = arrs[i].value;	
+		}
+		for(j in obj){
+			str+=j+"="+obj[j]+"&";
+		}
+		return str.replace(/&$/,"");
+	}
+	console.log(query() );//如果当前网址是www.xx.com?a=b,那么函数就返回a=b
+	var m = query([{key:"Ver",value:"aa"},{key:"b",value:"bc"},{key:"q",value:"bsdfsdf"}]);
+	console.log(m);
+
+</script>
+
+</head>
+<body>
+	
+
+
+</body>
+</html>	
