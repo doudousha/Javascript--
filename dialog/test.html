@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<script type="text/javascript">
+			window.onload = function(){
+
+				var eventUtil = {
+					addHandler: function(ele, eventName, eventHandler) {
+						if (ele.addEventListener) {
+							ele.addEventListener(eventName, eventHandler, false);
+						} else {
+							ele["_" + eventName + eventHandler] = eventHandler;
+							ele[eventName + eventHandler] = function() {
+								ele["_" + eventName + eventHandler]();
+							};
+							ele.attachEvent("on" + eventName, ele[eventName + eventHandler]);
+						}
+						//ele.addEventListener ? ele.addEventListener(eventName, eventHandler, false) : ele.attachEvent("on" + eventName, function(){eventHandler.call(ele)});
+					},
+					removeHandler: function(ele, eventName, eventHandler) {
+						ele.removeEventListener ? ele.removeEventListener(eventName, eventHandler, false) : ele.detachEvent("on" + eventName, ele[eventName + eventHandler]);
+					},
+					getEvent: function(event) {
+						return event ? Event : window.event;
+					},
+					getTarget: function(event) {
+						return event.target || event.srcElement;
+					},
+					preventDefault: function(event) {
+						event.preventDefault ? event.preventDefault() : (event.returnValue = false);
+					},
+					stopPropagation: function(event) {
+						event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
+					}
+				};
+
+				var box = document.getElementById("box");
+				eventUtil.addHandler(box,"click",function(){
+					alert("show");
+				});
+				console.log(box.onclick);
+			};
+	</script>
+</head>
+<body>
+
+	<div id="box" style='width:200px;height:200px;background:yellow;'></div>
+
+</body>
+</html>

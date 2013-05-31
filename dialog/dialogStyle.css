@@ -1,0 +1,91 @@
+
+div,span,input{
+	margin:0;
+	padding:0;
+}
+.dialog{
+	background-color: #FFFFFF;
+	border: 1px solid #A0A0A0;
+	color: #333333;
+	
+	position:fixed;
+	_position:absolute;
+	-moz-box-shadow: 3px 3px 7px #cac8c9;
+	/*Safari,Chrome*/
+	-webkit-box-shadow: 3px 3px 7px #cac8c9;
+	/*css3: Opera,IE9*/
+	box-shadow: 3px 3px 7px #cac8c9;
+	/* For IE 8 */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cac8c9')";
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=135, Color='#cac8c9');
+}
+.dialog-head{
+	height:24px;
+	color:#222222;
+	cursor: move;
+	margin:0;
+	padding:0 10px;
+	text-align:left;
+	font: 12px/24px "sans serif",tahoma,verdana,helvetica;
+	background: url('img/background.png') repeat scroll 0 0 #F0F0EE;
+	border-color:  #CFCFCF;
+	border-image: none;
+	border-style: none none solid;
+	border-width: 0 0 1px;
+}
+.dialog-head .icon-close {
+	background: url("img/default.png") no-repeat scroll 0 -688px transparent;
+	cursor: pointer;
+	display: block;
+	height: 16px;
+	position: absolute;
+	right: 6px;
+	top: 6px;
+	width: 16px;
+}
+.dialog-body{
+	font: 12px/1.5 "sans serif",tahoma,verdana,helvetica;
+	overflow: hidden;
+	text-align: left;
+	width: 100%;
+}
+.dialog-footer{
+	background-color: #FFFFFF;
+	font: 12px/1 "sans serif",tahoma,verdana,helvetica;
+	padding: 0 0 5px;
+	text-align: right;
+	width: 100%;
+}
+.button-common {
+	background: url("img/background.png") no-repeat scroll 0 -25px transparent;
+	cursor: pointer;
+	display: inline-block;
+	height: 23px;
+	line-height: 23px;
+	overflow: visible;
+	vertical-align: top;
+}
+.button-outer {
+	display: inline-block;
+	padding: 0;
+	position: relative;
+	vertical-align: middle;
+}
+.key-button {
+	background-position: right -25px;
+	border: 0 none;
+	color: #333333;
+	font-family: "sans serif",tahoma,verdana,helvetica;
+	font-size: 12px;
+	left: 2px;
+	margin: 0;
+	padding: 0 12px;
+	text-decoration: none;
+}
+.dialog-yes{
+	margin:5px;
+}
+.dialog-no {
+	margin: 5px 10px 5px 0px;
+}
