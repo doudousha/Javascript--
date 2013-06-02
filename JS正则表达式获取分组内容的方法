@@ -1,0 +1,53 @@
+
+支持多次匹配的方式：
+js 代码
+var testStr = "now test001 test002";    
+var re = /test(\d+)/ig;     
+var r = "";    
+while(r = re.exec(testStr)) {    
+    alert(r[0] + "  " + r[1]);    
+}   
+此外也可以用testStr.match(re)，但是这样的话就不能有g的选项，而且只能得到第一个匹配。
+另外备忘一下：
+正则表达式对象的属性及方法： 
+预定义的正则表达式拥有有以下静态属性：input, multiline, lastMatch, lastParen, leftContext,
+rightContext和$1到$9。其中input和multiline可以预设置。其他属性的值在执行过exec或test方法后被根据
+不同条件赋以不同的值。许多属性同时拥有长和短(perl风格)的两个名字，并且，这两个名字指向同一个值。(JavaScript模拟perl的正则表达式)
+正则表达式对象的属性： 
+属性 含义 
+$1...$9 如果它(们)存在，是匹配到的子串  
+$_ 参见input  
+$* 参见multiline  
+$& 参见lastMatch  
+$+ 参见lastParen  
+$` 参见leftContext  
+$''　　　　　　　　　 参见rightContext  
+constructor　　　  创建一个对象的一个特殊的函数原型  
+global　　　　　　  是否在整个串中匹配(bool型)  
+ignoreCase　　　　 匹配时是否忽略大小写(bool型)  
+input　　　　　　　 被匹配的串  
+lastIndex　　　　  最后一次匹配的索引  
+lastParen　　　　  最后一个括号括起来的子串  
+leftContext　　　  最近一次匹配以左的子串  
+multiline　　　　  是否进行多行匹配(bool型)  
+prototype　　　　  允许附加属性给对象  
+rightContext　　　 最近一次匹配以右的子串  
+source　　　　　　  正则表达式模式  
+lastIndex　　　　  最后一次匹配的索引 
+正则表达式对象的方法： 
+方法 含义 
+compile　　　　　  这个应该是指重新定义正则表达式的内容
+exec　　　　　　 执行查找，可以利用while的方式多次查找
+test　　　　　　　 进行匹配  
+toSource　　　　　 返回特定对象的定义(literal representing)，其值可用来创建一个新的对象。重载Object.toSource方法得到的。  
+toString　　　　　 返回特定对象的串。重载Object.toString方法得到的。  
+valueOf　　　　　  返回特定对象的原始值。重载Object.valueOf方法得到 
+ 
+例子： 
+<script language="JavaScript"> 
+var myReg = /(w+)s(w+)/; 
+var str  = "John Smith"; 
+var newstr = str.replace(myReg, "$2, $1"); 
+document.write(newstr); 
+</script>
+将输出"Smith, John" 
