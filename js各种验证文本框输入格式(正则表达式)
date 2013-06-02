@@ -1,0 +1,29 @@
+不能为空
+<input onblur="if(this.value.replace(/^ +| +$/g,'')=='')alert('不能为空!')">
+只能输入英文和数字
+<input onblur="if(/[^0-9a-zA-Z]/g.test(value))alert('有错')">
+<input onkeyup="value=value.replace(/[^0-9a-zA-Z]/g,'')"/>
+<input type="text" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9]/g,'')">
+判断字符由字母和数字，下划线,点号组成.且开头的只能是下划线和字母 
+/^([a-zA-z_]{1})([\w]*)$/g.test(str)
+只能输入数字
+<input name="text" type="text" id="NewPage" onKeyUp="value=value.replace(/\D/g,'')" onafterpaste="value=value.replace(/\D/g,'')" >
+只能输入中文
+<input type="text" onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')">
+只能输入英文
+<input type="text" onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')">
+<input type="text" onkeyup="value=value.replace(/[^a-zA-Z]/g,'')">
+只能输入中文、英文、数字、@符号和.符号
+<input type="text" onkeyup="value=value.replace(/[^\a-\z\A-\Z0-9\u4E00-\u9FA5\@\.]/g,'')">
+只允许输入英文，且不能粘贴也无法弹出粘贴菜单
+<input type="text" onkeyup="value=value.replace(/[^\a-\z\A-\Z]/g,'')" onkeydown="fncKeyStop(event)" onpaste="return false" oncontextmenu = "return false"/>
+只能输入数字和点号(注意:在[^\d\.]里的d不能写成大写D,否则就变成除了数字以外的所有字符)
+<input name="price" type="text" size="8" maxlength="8" onkeyup="value=value.replace(/[^\d\.]/g,'')" >
+总而言之:先在<input>里输入onkeyup="value=value.replace(/[^\X]/g,'')" 然后在(/[\X]/g,'')里的X换成你想输入的代码就可以了
+中文：u4E00-u9FA5
+数字：d、0-9
+英文：a-z、A-Z
+其它符号@,点或其它符号.也可以多个,用\隔开就行了.
+例如:
+中、英文和数字加@符号加点符号：\a-\z\A-\Z0-9\u4E00-\u9FA5\@\.
+若想在文本框里不能右键弹出菜单和不能粘贴进复制的信息的话就要在<input>里输入 onKeyDown="fncKeyStop(event)"
