@@ -1,4 +1,3 @@
-
 Sandbox.moudles = {};
 function Sandbox(){
 
@@ -119,6 +118,15 @@ Sandbox.moudles["Array"] = function(box){
 
 	};
 };
+
+//js原生Array增加each方法,支持多维数组
+Array.prototype.each = function(fn){
+        return this.length ? [fn(this.slice(0,1))].concat(this.slice(1).each(fn)) : [];
+    };
+    
+    [1,2,3,4].each(function(x){
+       console.log(x);
+    });
 
 /**
   *string的扩展方法
