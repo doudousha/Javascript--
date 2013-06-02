@@ -1,0 +1,26 @@
+
+String.replace( ) 简介
+语法：
+string.replace(regexp, replacement)
+regexp ：您要执行替换操作的正则表达式，如果传入的是一个字符串，那就会当作普通字符来处理，
+并且只会执行一次替换操作；如果是正则表达式，并且带有 global (g) 修饰符，则会替换所有出现的目标字符，
+否则，将只执行一次替换操作。
+
+replacement ：您要替换成的字符。
+返回值是执行替换操作后的字符串。
+
+String.replace( ) 的简单用法
+var text = "javascript 非常强大 ！"; text.replace(/javascript/i, "JavaScript"); // 返回：JavaScript 非常强大 ！
+
+String.replace( ) 实现调换位置
+var name= "Doe, John"; name.replace(/(\w+)\s*,\s*(\w+)/, "$2 $1");
+// 返回：John DoeString.replace( ) 实现将所有双引号包含的字符替换成中括号包含的字符
+var text = '"JavaScript" 非常强大！'; text.replace(/"([^"]*)"/g, "[$1]"); // 返回：[JavaScript] 非常强大！
+
+String.replace() 参数解释
+当第一个参数为正则表达式时，第二个参数为一个function时，
+第二个参数中的function的参数中 $表示正则匹配的字符串，
+$1,$2...为分组的内容：
+"abc {name} test".replace(/{(.*?)}/img,function($,$1){  
+        console.log($,$1);//output {name} name
+    return $1; });
