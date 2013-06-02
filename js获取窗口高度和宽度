@@ -1,0 +1,48 @@
+一个是利用jquery来实现的，下面是在加入了jquery库的情况下载做的。
+ 代码如下 复制代码 
+<script type="text/javascript"> 
+$(document).ready( 
+function() 
+{ 
+var h = $(window).height(); 
+alert(h+'http://www.zhutiai.com/5250/'); 
+} 
+) 
+</script> 
+在ie 805  
+在ff 下是否 787哦，
+两种浏览器因显示像素不同，是因为浏览对padding和margin的区别引起的。
+
+js获取浏览器高度和宽度值
+网页可见区域宽： document.body.clientWidth
+网页可见区域高： document.body.clientHeight
+网页可见区域宽： document.body.offsetWidth (包括边线的宽)
+网页可见区域高： document.body.offsetHeight (包括边线的高)
+网页正文全文宽： document.body.scrollWidth
+网页正文全文高： document.body.scrollHeight
+网页被卷去的高： document.body.scrollTop
+网页被卷去的左： document.body.scrollLeft
+网页正文部分上： window.screenTop
+网页正文部分左： window.screenLeft
+屏幕分辨率的高： window.screen.height
+屏幕分辨率的宽： window.screen.width
+屏幕可用工作区高度： window.screen.availHeight
+屏幕可用工作区宽度： window.screen.availWidth
+知道上面的参数后我们就可以方便实现浏览器高度与宽度的代码了
+在没有声明DOCTYPE的IE中，浏览器显示窗口大小只能以下获取：
+ 代码如下 复制代码 
+document.body.offsetWidth
+document.body.offsetHeight
+ 
+在声明了DOCTYPE的浏览器中，可以用以下来获取浏览器显示窗口大小：
+ 代码如下 复制代码 
+document.documentElement.clientWidth
+document.documentElement.clientHeight
+ 
+IE，FF，Safari皆支持该方法，opera虽支持该属性，但是返回的是页面尺寸；
+同时，除了IE以外的所有浏览器都将此信息保存在window对象中，可以用以下获取：
+ 代码如下 复制代码
+
+window.innerWidth
+
+window.innerHeight
