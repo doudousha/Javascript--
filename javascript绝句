@@ -20,7 +20,7 @@ var arr = [].slice.call(arguments)
 Math.random().toString(16).substring(2); //14位
 Math.random().toString(36).substring(2); //11位
 
-5. 合并数组：
+5. 合并数组223：
 var a = [1,2,3];
 var b = [4,5,6];
 Array.prototype.push.apply(a, b);
